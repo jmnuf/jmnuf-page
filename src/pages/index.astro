@@ -1,4 +1,5 @@
 ---
+import App from "../components/app";
 ---
 
 <html lang="en">
@@ -8,8 +9,16 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
+		<style>
+			.maxed-height {
+				height: 100vh;
+				height: 100svh !important;
+			}
+		</style>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<App>
+			<h1>JM</h1>
+		</App>
 	</body>
 </html>
