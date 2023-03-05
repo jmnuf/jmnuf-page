@@ -19,6 +19,7 @@ const IconWithHint = ({ src, alt, hint, href, size }: IconWithHintProps) => {
 				class="relative inline-block"
 				style={{ width: `${size}px`, height: `${size}px` }}
 				href={href}
+				target="_blank"
 				onMouseEnter={() => setHovering(true)}
 				onMouseLeave={() => setHovering(false)}
 			>
