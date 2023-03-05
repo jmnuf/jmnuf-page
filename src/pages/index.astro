@@ -1,6 +1,7 @@
 ---
 import App from "../components/app";
 import Header from "../components/header";
+import IconWithHint from "../components/icon-with-hint";
 ---
 
 <html lang="en">
@@ -15,7 +16,11 @@ import Header from "../components/header";
 	<body>
 		<App>
 			<Header client:visible />
-			<h1>JM</h1>
+			<div class="container mx-auto">
+				<h3>YouTube</h3>
+				<IconWithHint client:visible size={28} src="/icons/002-youtube.png" alt="youtube icon" href="youtube.com/@nglr_JM" hint="Got a youtube for random stuff" />
+				<p>There's a youtube I own you can subscribe to if you so wish to. Though really it's random content</p>
+			</div>
 		</App>
 	</body>
 </html>
