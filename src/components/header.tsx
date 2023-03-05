@@ -4,7 +4,7 @@ const Header = () => {
 	return (
 		<>
 			<div class="w-full text-pink-200 pb-4 shadow-inner mb-2 pt-1 bg-gray-800 bg-opacity-50 text-center">
-				<Carousel slideDurationSeconds={100} startingSlide={1}>
+				<Carousel slideDurationSeconds={1.25} startingSlide={1}>
 					<img src="/logo-1.png" alt="jm logo 1" class="block h-44" />
 					<img src="/logo-2.png" alt="jm logo 2" class="block h-44" />
 				</Carousel>
