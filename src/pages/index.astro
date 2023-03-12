@@ -16,28 +16,28 @@ import IconWithHint from "../components/icon-with-hint";
 		/>
 		<title>JM's Landing Page</title>
 		<style>
-			.polygon {
+			.blade-left {
 				clip-path: polygon(0 0, 80% 0, 99% 100%, 0 100%);
 				padding-left: 1rem;
 				transform: translateX(-2%);
 			}
-			.polygon * {
+			.blade-left * {
 				margin-right: 15%;
 			}
-			.polygon:hover, .polygon-flipped:hover {
+			.blade-left:hover, .blade-right:hover {
 				transform: translateX(0%);
 			}
-			.polygon-flipped {
+			.blade-right {
 				clip-path: polygon(10% 100%, 20% 0, 100% 0, 100% 100%);
 				text-align: right;
 				padding-right: 1rem;
 				transform: translateX(2%);
 			}
-			.polygon-flipped * {
+			.blade-right * {
 				margin-left: 15%;
 			}
 
-			.polygon, .polygon-flipped {
+			.blade-left, .blade-right {
 				margin-top: 1rem;
 				margin-bottom: 1rem;
 				min-height: 50px;
@@ -54,7 +54,7 @@ import IconWithHint from "../components/icon-with-hint";
 				color: black;
 			}
 			@media (prefers-reduced-motion) {
-				.polygon, .polygon-flipped {
+				.blade-left, .blade-right {
 					transition-property: none;
 				}
 			}
@@ -69,7 +69,7 @@ import IconWithHint from "../components/icon-with-hint";
 	<body>
 		<App>
 			<Header client:visible />
-			<div class="md:w-11/12 polygon transition-all">
+			<div class="md:w-11/12 blade-left transition-all">
 				<div class="container px-2 md:px-auto md:mx-auto">
 					<h2 class="text-lg text-center mr-none">Website under construction</h2>
 					<h3>YouTube</h3>
@@ -87,7 +87,7 @@ import IconWithHint from "../components/icon-with-hint";
 					</p>
 				</div>
 			</div>
-			<div class="md:w-11/12 bg-opacity-75 polygon-flipped">
+			<div class="md:w-11/12 bg-opacity-75 blade-right">
 				<div class="container px-2 md:px-auto md:mx-auto">
 					<h2 class="text-center ml-none">Test Polygon Flipped</h2>
 				</div>
