@@ -10,17 +10,75 @@ import IconWithHint from "../components/icon-with-hint";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="JM's landing page. A guy that exists is here">
+		<meta
+			name="description"
+			content="JM's landing page. A guy that exists is here"
+		/>
 		<title>JM's Landing Page</title>
+		<style>
+			.polygon {
+				clip-path: polygon(0 0, 80% 0, 100% 100%, 0 100%);
+				padding-left: 1rem;
+				transform: translateX(-2%);
+			}
+			.polygon * {
+				margin-right: 15%;
+			}
+			.polygon:hover, .polygon-flipped:hover {
+				transform: translateX(0%);
+			}
+			.polygon-flipped {
+				clip-path: polygon(0 100%, 20% 0, 100% 0, 100% 100%);
+				text-align: right;
+				padding-right: 1rem;
+				transform: translateX(2%);
+			}
+
+			.polygon, .polygon-flipped {
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+				min-height: 50px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding-top: 1rem;
+				padding-bottom: 1rem;
+				transition-property: all;
+				transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+				transition-duration: 250ms;
+			}
+			@media (prefers-reduced-motion) {
+				.polygon, .polygon-flipped {
+					transition-property: none;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<App>
 			<Header client:visible />
-			<div class="container mx-auto">
-				<h2 class="text-lg text-center text-pink-50">Website under construction</h2>
-				<h3>YouTube</h3>
-				<IconWithHint client:visible size={28} src="/icons/002-youtube.png" alt="youtube icon" href="https://www.youtube.com/@nglr-jm" hint="Got a youtube for random stuff" />
-				<p>There's a youtube I own you can subscribe to if you so wish to. Though really it's random content</p>
+			<div class="bg-pink-300 text-black md:w-11/12 polygon transition-all">
+				<div class="container px-2 md:px-auto md:mx-auto">
+					<h2 class="text-lg text-center">Website under construction</h2>
+					<h3>YouTube</h3>
+					<IconWithHint
+						client:visible
+						size={28}
+						src="/icons/002-youtube.png"
+						alt="youtube icon"
+						href="https://www.youtube.com/@nglr_jm"
+						hint="Got a youtube for random stuff"
+					/>
+					<p>
+						There's a youtube I own you can subscribe to if you so wish to.
+						Though really it's random content
+					</p>
+				</div>
+			</div>
+			<div class="bg-pink-300 polygon-flipped motio">
+				<div class="container px-2 md:px-auto md:mx-auto">
+					<h2 class="text-center">Test Polygon Flipped</h2>
+				</div>
 			</div>
 		</App>
 	</body>

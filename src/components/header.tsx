@@ -9,7 +9,7 @@ const Header = () => {
 					<img src="/logo-2.png" alt="jm logo 2" class="block h-44" />
 				</Carousel>
 				<h1>JM</h1>
-				<h2>A goof that exists and does stuff sometimes</h2>
+				<h2>A guy that exists and does stuff sometimes</h2>
 			</div>
 		</>
 	);
