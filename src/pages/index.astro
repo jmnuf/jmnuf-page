@@ -17,7 +17,7 @@ import IconWithHint from "../components/icon-with-hint";
 		<title>JM's Landing Page</title>
 		<style>
 			.polygon {
-				clip-path: polygon(0 0, 80% 0, 100% 100%, 0 100%);
+				clip-path: polygon(0 0, 80% 0, 99% 100%, 0 100%);
 				padding-left: 1rem;
 				transform: translateX(-2%);
 			}
@@ -28,10 +28,13 @@ import IconWithHint from "../components/icon-with-hint";
 				transform: translateX(0%);
 			}
 			.polygon-flipped {
-				clip-path: polygon(0 100%, 20% 0, 100% 0, 100% 100%);
+				clip-path: polygon(10% 100%, 20% 0, 100% 0, 100% 100%);
 				text-align: right;
 				padding-right: 1rem;
 				transform: translateX(2%);
+			}
+			.polygon-flipped * {
+				margin-left: 15%;
 			}
 
 			.polygon, .polygon-flipped {
@@ -45,21 +48,30 @@ import IconWithHint from "../components/icon-with-hint";
 				padding-bottom: 1rem;
 				transition-property: all;
 				transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-				transition-duration: 250ms;
+				transition-duration: 200ms;
+				--bg-opacity: 0.85;
+				background-color: rgba(249, 168, 212, var(--bg-opacity));
+				color: black;
 			}
 			@media (prefers-reduced-motion) {
 				.polygon, .polygon-flipped {
 					transition-property: none;
 				}
 			}
+			.ml-none {
+				margin-left: 0%;
+			}
+			.mr-none {
+				margin-right: 0%;
+			}
 		</style>
 	</head>
 	<body>
 		<App>
 			<Header client:visible />
-			<div class="bg-pink-300 text-black md:w-11/12 polygon transition-all">
+			<div class="md:w-11/12 polygon transition-all">
 				<div class="container px-2 md:px-auto md:mx-auto">
-					<h2 class="text-lg text-center">Website under construction</h2>
+					<h2 class="text-lg text-center mr-none">Website under construction</h2>
 					<h3>YouTube</h3>
 					<IconWithHint
 						client:visible
@@ -75,9 +87,9 @@ import IconWithHint from "../components/icon-with-hint";
 					</p>
 				</div>
 			</div>
-			<div class="bg-pink-300 polygon-flipped motio">
+			<div class="md:w-11/12 bg-opacity-75 polygon-flipped">
 				<div class="container px-2 md:px-auto md:mx-auto">
-					<h2 class="text-center">Test Polygon Flipped</h2>
+					<h2 class="text-center ml-none">Test Polygon Flipped</h2>
 				</div>
 			</div>
 		</App>
