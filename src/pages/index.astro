@@ -16,59 +16,6 @@ import IconWithHint from "../components/icon-with-hint";
 			content="JM's landing page. A guy that exists is here"
 		/>
 		<title>JM's Landing Page</title>
-		<style>
-			.blade-left {
-				clip-path: polygon(0 0, 80% 0, 99% 100%, 0 100%);
-				padding-left: 1rem;
-				transform: translateX(-2%);
-			}
-			.blade-left * {
-				margin-right: 15%;
-			}
-			.blade-left:hover,
-			.blade-right:hover {
-				transform: translateX(0%);
-			}
-			.blade-right {
-				clip-path: polygon(10% 100%, 20% 0, 100% 0, 100% 100%);
-				text-align: right;
-				padding-right: 1rem;
-				transform: translateX(2%);
-			}
-			.blade-right * {
-				margin-left: 15%;
-			}
-
-			.blade-left,
-			.blade-right {
-				margin-top: 1rem;
-				margin-bottom: 1rem;
-				min-height: 50px;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				padding-top: 1rem;
-				padding-bottom: 1rem;
-				transition-property: all;
-				transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-				transition-duration: 200ms;
-				--bg-opacity: 0.85;
-				background-color: rgba(249, 168, 212, var(--bg-opacity));
-				color: black;
-			}
-			@media (prefers-reduced-motion) {
-				.blade-left,
-				.blade-right {
-					transition-property: none;
-				}
-			}
-			.ml-none {
-				margin-left: 0%;
-			}
-			.mr-none {
-				margin-right: 0%;
-			}
-		</style>
 	</head>
 	<body>
 		<App>
@@ -95,9 +42,9 @@ import IconWithHint from "../components/icon-with-hint";
 				</p>
 			</Blade>
 			<Blade type="right">
-				<h2 class="mr-none">OS Website</h2>
+				<h2 class="mr-none">This Website</h2>
 				<p>
-					This website is also publicly available on github
+					This website is also publicly available on <a href="https://github.com/jmnuf/jm-on-site">github</a> if you so wish to see it
 				</p>
 			</Blade>
 		</App>
