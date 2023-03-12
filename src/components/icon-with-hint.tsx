@@ -36,8 +36,9 @@ const IconWithHint = ({
 					<img
 						src={src}
 						alt={alt}
-						// width={size}
-						// height={size}
+						width={size}
+						height={size}
+						style={{ width: `${size}px`, height: `${size}px` }}
 						class={hovering() ? `animate-spin` : undefined}
 					/>
 				</span>

@@ -37,6 +37,12 @@
 	background-color: rgba(249, 168, 212, var(--bg-opacity));
 	color: black;
 }
+
+.blade-left a, .blade-right a {
+	color: rgb(66 19 139);
+	text-decoration: underline wavy red 1px;
+}
+
 @media (prefers-reduced-motion) {
 	.blade-left, .blade-right {
 		transition-property: none;
