@@ -24,9 +24,8 @@ const IconWithHint = ({
 	return (
 		<>
 			<a
-				class="inline-block relative text-center h-8"
+				class="inline-block relative w-fit text-center h-8"
 				href={href}
-				// style={{ height: `${size}px` }}
 				target="_blank"
 				onMouseEnter={() => setHovering(true)}
 				onMouseLeave={() => setHovering(false)}
