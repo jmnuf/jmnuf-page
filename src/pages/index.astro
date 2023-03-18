@@ -20,14 +20,12 @@ import IconWithHint from "../components/icon-with-hint";
 	<body>
 		<App>
 			<Header client:load />
-			
+
 			<Blade type="right">
-				<h2 class="text-lg font-bold text-center">Welcome Wanderer</h2>
-				<p>
-					Just some socials for Jose Marco who also goes by JM.
-				</p>
+				<h3 class="text-lg font-bold text-center">Welcome Wanderer</h3>
+				<p>Just some socials for Jose Marco who also goes by JM.</p>
 			</Blade>
-			
+
 			<Blade type="left">
 				<section class="w-max flex align-middle justify-center">
 					<IconWithHint
@@ -42,7 +40,8 @@ import IconWithHint from "../components/icon-with-hint";
 				</section>
 				<p>
 					There's a youtube I own you can subscribe to if you so wish to. Though
-					really it's random content that I have there with no real upload schedule.
+					really it's random content that I have there with no real upload
+					schedule.
 				</p>
 			</Blade>
 
@@ -59,8 +58,11 @@ import IconWithHint from "../components/icon-with-hint";
 					/>
 				</section>
 				<p>
-					I have github with some random projects I've worked on. Consider taking a look there if you wish to. <br />
-					This website is also publicly available in the <a href="https://github.com/jmnuf/jm-on-site">github</a> if you so wish to see the source code
+					I have github with some random projects I've worked on. Consider
+					taking a look there if you wish to. <br />
+					This website is also publicly available in the <a
+						href="https://github.com/jmnuf/jm-on-site">github</a
+					> if you so wish to see the source code
 				</p>
 			</Blade>
 
@@ -77,11 +79,25 @@ import IconWithHint from "../components/icon-with-hint";
 					/>
 				</section>
 				<p>
-					Though not really a habit I do stream sometimes, have done code, art and games streams.<br />
-					I do work a full time so if I do stream I'lll usually do so either a Saturday or Sunday at around 15:30~16:30 CET or 3:30pm~4:30pm for those that don't know 24hrs.<br />
+					Though not really a habit I do stream sometimes, have done code, art
+					and games streams.<br />
+					I do work a full time so if I do stream I'lll usually do so either a Saturday
+					or Sunday at around 15:30~16:30 CET or 3:30pm~4:30pm for those that don't
+					know 24hrs.<br />
 					This website was started in a live stream actually!
 				</p>
 			</Blade>
+
+			<footer
+				class="flex flex-col justify-center align-middle text-center relative bottom-0 left-0 right-0 min-h-fit bg-slate-500 bg-opacity-50 pt-4 pb-2"
+			>
+				<address>
+					<p class="text-base">
+						Built by <a href="mailto:jose.m.nufio.0@gmail.com">Jose Marco</a>
+					</p>
+				</address>
+				<p class="text-sm">Built on top of <a href="https://astro.build/">Astro</a> and <a href="https://www.solidjs.com/">SolidJS</a></p>
+			</footer>
 		</App>
 	</body>
 </html>
