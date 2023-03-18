@@ -88,8 +88,11 @@
 }
 
 .blade-left a, .blade-right a {
-	color: rgb(66 19 139);
+	color: rgb(193, 148, 255);
 	text-decoration: underline wavy red 1px;
+}
+.blade-left:hover a, .blade-right:hover a {
+	color: rgb(66 19 139);
 }
 .blade-left:hover, .blade-right:hover {
 	transform: translateX(0%);
