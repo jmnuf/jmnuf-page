@@ -22,7 +22,10 @@ import IconWithHint from "../components/icon-with-hint";
 			<Header client:load />
 			
 			<Blade type="right">
-				<h2 class="text-center">Website under construction</h2>
+				<h2 class="text-lg font-bold text-center">Welcome Wanderer</h2>
+				<p>
+					Just some socials for Jose Marco who also goes by JM.
+				</p>
 			</Blade>
 			
 			<Blade type="left">
@@ -42,6 +45,7 @@ import IconWithHint from "../components/icon-with-hint";
 					really it's random content that I have there with no real upload schedule.
 				</p>
 			</Blade>
+
 			<Blade type="right">
 				<section class="w-max flex align-middle justify-center">
 					<IconWithHint
@@ -57,6 +61,25 @@ import IconWithHint from "../components/icon-with-hint";
 				<p>
 					I have github with some random projects I've worked on. Consider taking a look there if you wish to. <br />
 					This website is also publicly available in the <a href="https://github.com/jmnuf/jm-on-site">github</a> if you so wish to see the source code
+				</p>
+			</Blade>
+
+			<Blade type="left">
+				<section class="w-max flex align-middle justify-center">
+					<IconWithHint
+						client:visible
+						message="@jm_of_nglr"
+						size={24}
+						src="/icons/001-twitch.png"
+						alt="twitch icon"
+						href="https://twitch.tv/jm_of_nglr"
+						hint="Catch some live of mine"
+					/>
+				</section>
+				<p>
+					Though not really a habit I do stream sometimes, have done code, art and games streams.<br />
+					I do work a full time so if I do stream I'lll usually do so either a Saturday or Sunday at around 15:30~16:30 CET or 3:30pm~4:30pm for those that don't know 24hrs.<br />
+					This website was started in a live stream actually!
 				</p>
 			</Blade>
 		</App>
