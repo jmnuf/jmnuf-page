@@ -22,29 +22,43 @@ import IconWithHint from "../components/icon-with-hint";
 			<Header client:visible />
 			
 			<Blade type="right">
-				<h2 class="text-center ml-none">Website under construction</h2>
+				<h2 class="text-center">Website under construction</h2>
 			</Blade>
 			
 			<Blade type="left">
-				<h2 class="text-lg text-center mr-none">YouTube</h2>
-				<IconWithHint
-					client:visible
-					message="NGLR - JM"
-					size={24}
-					src="/icons/002-youtube.png"
-					alt="youtube icon"
-					href="https://www.youtube.com/@nglr_jm"
-					hint="Got a youtube for random stuff"
-				/>
+				<section class="w-full flex flex-col align-middle justify-center">
+					<h2 class="text-lg text-center">YouTube</h2>
+					<IconWithHint
+						client:visible
+						message="NGLR - JM"
+						size={24}
+						src="/icons/002-youtube.png"
+						alt="youtube icon"
+						href="https://www.youtube.com/@nglr_jm"
+						hint="Got a youtube for random stuff"
+					/>
+				</section>
 				<p>
 					There's a youtube I own you can subscribe to if you so wish to. Though
 					really it's random content
 				</p>
 			</Blade>
 			<Blade type="right">
-				<h2 class="mr-none">This Website</h2>
+				<section class="w-full flex flex-col align-middle justify-center">
+					<h2 class="text-lg text-center">Github</h2>
+					<IconWithHint
+						client:visible
+						message="jmnuf"
+						size={24}
+						src="/icons/003-github.png"
+						alt="github icon"
+						href="https://github.com/jmnuf/"
+						hint="Check other codes by me"
+					/>
+				</section>
 				<p>
-					This website is also publicly available on <a href="https://github.com/jmnuf/jm-on-site">github</a> if you so wish to see it
+					I have github with some random projects I've worked on. Consider taking a look there if you wish to. <br />
+					This website is also publicly available in the <a href="https://github.com/jmnuf/jm-on-site">github</a> if you so wish to see the source code
 				</p>
 			</Blade>
 		</App>
