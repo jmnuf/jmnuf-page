@@ -31,7 +31,7 @@ const IconWithHint = ({
 				onMouseEnter={() => setHovering(true)}
 				onMouseLeave={() => setHovering(false)}
 			>
-				<span class="inline-flex gap-2 w-[200px] h-full text-center">
+				<span class="inline-flex gap-2 w-max h-full text-center">
 					{message}
 					<img
 						src={src}
@@ -43,7 +43,7 @@ const IconWithHint = ({
 					/>
 				</span>
 				<span
-					class={`flex absolute bg-black text-pink-200 top-[calc(50%-1rem)] transition-all left-[55%] justify-center align-middle text-center rounded-sm px-2 h-8 w-max ${
+					class={`flex absolute bg-black text-pink-200 top-[calc(50%-1rem)] transition-all left-full justify-center align-middle text-center rounded-sm px-2 h-8 w-max ${
 						hovering() ? hoveringClasses[0] : hoveringClasses[1]
 					} overflow-hidden bg-opacity-40`}
 				>
