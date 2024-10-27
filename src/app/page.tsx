@@ -1,53 +1,78 @@
-import Link from "next/link";
+import Image from "next/image";
+import type { Metadata } from "next";
+import { Suspense } from "react";
+import { JmLogoLetters, JmLogoChara } from "~/app/_components/images";
+import { LowBatterySVG } from "~/app/_components/icons";
+import { GeneralView, Time, MyGamesGrid } from "~/app/_components/general_view";
 
-import { LatestPost } from "~/app/_components/post";
-import { api, HydrateClient } from "~/trpc/server";
+export const metadata: Metadata = {
+  title: "@jmnuf",
+};
+
+function wait(secs: number) {
+    return new Promise(resolve => setTimeout(resolve, secs * 1000));
+}
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
+  return <GeneralView>
+    <Displayer>
+      <Suspense fallback={<Content skeleton={true} />}>
+	<Content />
+      </Suspense>
+    </Displayer>
+    <footer className="flex justify-center items-center absolute pt-2 pb-1 px-4 left-0 bottom-0 w-full bg-slate-600 text-slate-100"><p>{"Uicons by "}<a href="https://www.flaticon.com/uicons">Flaticon</a></p></footer>
+  </GeneralView>;
+}
 
-  void api.post.getLatest.prefetch();
 
-  return (
-    <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-          </h1>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/usage/first-steps"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">First Steps →</h3>
-              <div className="text-lg">
-                Just the basics - Everything you need to know to set up your
-                database and authentication.
-              </div>
-            </Link>
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/introduction"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">Documentation →</h3>
-              <div className="text-lg">
-                Learn more about Create T3 App, the libraries it uses, and how
-                to deploy it.
-              </div>
-            </Link>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
-              {hello ? hello.greeting : "Loading tRPC query..."}
-            </p>
-          </div>
+const Displayer:React.FC<{children: React.ReactNode}> = ({ children }) => {
+    const animation_css = `opacity-0 animate-[fadeIn_500ms_ease-in_1s_forwards]`;//`transition-[opacity] delay-150 duration-500 opacity-${opacity}`;
+    const layout_css = "h-full w-full flex p-1";
+    return <div className={`${animation_css} ${layout_css}`}>{children}</div>;
+};
 
-          <LatestPost />
-        </div>
-      </main>
-    </HydrateClient>
-  );
+const Content:React.FC<{skeleton?: boolean}> = async ({ skeleton = false }) => {
+  const topRightContents = <div className="flex items-center gap-2">
+    <Time updates={!skeleton} />
+    {skeleton ? <span>-</span> : <LowBatterySVG size={"18px"} />}
+  </div>;
+  if (skeleton) {
+    return <div className="w-full h-full flex flex-col opacity-0 animate-fadeIn delay-[1.75s]">
+    <div className="w-full flex justify-between items-center">
+      <div>{"(--)"}</div>
+      {topRightContents}
+    </div>
+    <div className="flex w-full h-5/6 px-8 opacity-0 animate-[fadeIn_500ms_ease-in-out_2s_forwards]">
+      <div className="grid grid-cols-4 w-full h-[90%] pt-4 items-center gap-4">
+	<GameSkeleton withoutBG={true} />
+	<GameSkeleton withoutBG={true} />
+	<GameSkeleton withoutBG={true} />
+	<GameSkeleton withoutBG={true} />
+      </div>
+    </div>
+    </div>;
+  }
+  await wait(4);
+  return <div className="w-full h-full flex flex-col opacity-0 animate-[fadeIn_500ms_ease-in-out_forwards]">
+    <div className="w-full flex justify-between items-start">
+      <div className="rounded-full overflow-hidden border-2 border-black"><JmLogoChara size={40} /></div>
+      {topRightContents}
+    </div>
+    <MyGamesGrid />
+  </div>;
+};
+
+const GameSkeleton = ({ withoutBG }: { withoutBG?: boolean }) => {
+  if (withoutBG) {
+    return <div className="h-3/4 rounded-lg border-3 border-slate-300 shadow-lg animate-pulse">
+      <div className="opacity-10 p-4">
+	<JmLogoLetters size={250} />
+      </div>
+    </div>
+  }
+  return <div className="h-3/4 rounded-lg border-3 border-slate-300 bg-slate-400 opacity-50 shadow-lg animate-pulse">
+    <div className="opacity-10 p-4">
+      <JmLogoLetters size={250} />
+    </div>
+  </div>
 }
