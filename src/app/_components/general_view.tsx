@@ -7,15 +7,11 @@ import { JmLogoLettersSrc } from "~/app/_components/images";
 export const GeneralView: React.FC<{children: React.ReactNode}> = ({ children }) => {
     const [yTranslate, setYTranslate] = useState("-translate-y-[200%]");
     const [bodyBG, setBodyBG] = useState("bg-slate-800");
-    const [viewOpacity, setViewOpacity] = useState(0);
     useEffect(() => {
 	setYTranslate("translate-y-0");
 	let timeoutId:ReturnType<typeof setTimeout>|null = setTimeout(() => {
 	    setBodyBG("bg-slate-200");
-	    timeoutId = setTimeout(() => {
-		setViewOpacity(100);
-		timeoutId = null;
-	    }, 1000);
+	    timeoutId = null;
 	}, 1000);
 	return () => timeoutId ? clearTimeout(timeoutId) : undefined;
     }, []);
@@ -41,7 +37,7 @@ export const Time:React.FC<{ updates: boolean }> = ({ updates }) => {
   }
   useEffect(() => {
     if (updates) {
-      let timeoutId = setTimeout(() => setTime(new Date()), 500);
+      const timeoutId = setTimeout(() => setTime(new Date()), 500);
       return () => clearTimeout(timeoutId);
     }
   }, [time]);
