@@ -2,7 +2,8 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-import { JmLogoLettersSrc } from "~/app/_components/images";
+import { JmLogoLetters } from "~/app/_components/images";
+import { GitBranchSVG, ScreenPlaySVG, DocumentCircleWrongSVG } from "~/app/_components/icons";
 
 export const GeneralView: React.FC<{children: React.ReactNode}> = ({ children }) => {
     const [yTranslate, setYTranslate] = useState("-translate-y-[200%]");
@@ -45,17 +46,20 @@ export const Time:React.FC<{ updates: boolean }> = ({ updates }) => {
   return <span>{`${hours}:${minutes}`}<span className="text-xs">{':'+seconds}</span></span>
 }
 
-export const GameSlot:React.FC<{ title: string, imageSrc: string, action: () => void }> = ({ title, imageSrc, action }) => {
+export const GameSlot:React.FC<{ title: string, image: React.JSX.Element, action: () => void }> = ({ title, image, action }) => {
   /* const [isHovered, setIsHovered] = useState(false); */
   const imgSize = 250;
   return <div className="h-3/4 flex flex-col border-4 group justify-center">
     <h2 className="text-center invisible select-none text-bold text-sky-600 group-hover:visible group-hover:select-auto">{title}</h2>
     <button
-      className="transition-all rounded-lg border-0 p-4 border-sky-400 group-hover:border-4 group-hover:p-2"
+      className="transition-all w-full h-[250px] rounded-lg border-0 p-4 border-sky-400 group-hover:border-4 group-hover:p-2"
       onClick={action}
     >
-      <div className="w-full h-full transition-all rounded-lg border-3 border-slate-300 bg-slate-400 shadow-lg group-hover:shadow-[0_0_5px_12px_#22d3ee25]">
-	<Image src={imageSrc} alt={title} width={imgSize} height={imgSize} />
+    <div
+    className="w-full h-full transition-all flex justify-center items-center rounded-lg border border-sky-200 bg-slate-100 shadow-lg group-hover:border-0 group-hover:shadow-[0_0_5px_12px_#22d3ee25]"
+    >
+	  {/* <Image src={image} alt={title} width={imgSize} height={imgSize} /> */}
+	  {image}
       </div>
     </button>
   </div>
@@ -68,13 +72,15 @@ function openInNewTab(url: string) {
   ahref.click();
 }
 
-export const MyGamesGrid:React.FC = () => {
-  return <div className={"flex w-full h-5/6 px-8 opacity-0 animate-[fadeIn_500ms_ease-in-out_2s_forwards]"}>
-    <div className="grid grid-cols-4 w-full h-[90%] pt-4 items-center gap-4">
-      <GameSlot title="GitHub" imageSrc={JmLogoLettersSrc} action={() => openInNewTab("https://github.com/jmnuf")} />
-      <GameSlot title="Info" imageSrc={JmLogoLettersSrc} action={() => console.log("TODO: Show information in tamagotchi") } />
-      <GameSlot title="Twitch" imageSrc={JmLogoLettersSrc} action={() => openInNewTab("https://twitch.tv/jmnuf")} />
-      <GameSlot title="TODO" imageSrc={JmLogoLettersSrc} action={() => console.log("TODO: Idk put something here")} />
-    </div>
-  </div>;
+export const MyGamesGrid = () => {
+    const imgSize = 250;
+    const svgSize = 100;
+    return <div className={"flex w-full h-5/6 px-8 opacity-0 animate-[fadeIn_500ms_ease-in-out_2s_forwards]"}>
+	<div className="grid grid-cols-4 w-full h-[90%] pt-4 items-center gap-4">
+	    <GameSlot title="GitHub" image={<GitBranchSVG size={svgSize} />} action={() => openInNewTab("https://github.com/jmnuf")} />
+	    <GameSlot title="Info" image={<JmLogoLetters size={imgSize} />} action={() => console.log("TODO: Show information in tamagotchi") } />
+	    <GameSlot title="Twitch" image={<ScreenPlaySVG size={svgSize} />} action={() => openInNewTab("https://twitch.tv/jmnuf")} />
+	    <GameSlot title="Error 404" image={<DocumentCircleWrongSVG size={svgSize} />} action={() => console.log("TODO: Idk put something here")} />
+	</div>
+    </div>;
 };
