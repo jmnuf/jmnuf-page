@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 import { JmLogoLetters } from "~/app/_components/images";
