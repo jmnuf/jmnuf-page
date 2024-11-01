@@ -87,4 +87,3 @@ function openInNewTab(url: string) {
   ahref.target = "_blank";
   ahref.click();
 }
-
