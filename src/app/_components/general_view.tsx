@@ -3,13 +3,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-import { JmLogoLetters } from "~/app/_components/images";
-import {
-  GitBranchSVG,
-  ScreenPlaySVG,
-  DocumentCircleWrongSVG,
-} from "~/app/_components/icons";
-
 function useTimeDisplay() {
   const [time, setTime] = useState<Date | null>(null);
   const hours = time ? `${time.getHours()}`.padStart(2, "0") : "--";
@@ -80,10 +73,3 @@ export const GameSlot: React.FC<{
     </div>
   );
 };
-
-function openInNewTab(url: string) {
-  const ahref = document.createElement("a");
-  ahref.href = url;
-  ahref.target = "_blank";
-  ahref.click();
-}
