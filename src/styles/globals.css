@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#about-h {
+    view-transition-name: about-header;
+}
+
+@keyframes zoomer-out {
+    from: {
+	transform: scale(1);
+	opacity: 1;
+    }
+    to: {
+	transform: scale(10);
+	opacity: 0;
+    }
+}
+@keyfraomes zoomer-in {
+    from: {
+	transform: scale(10);
+	opacity: 0;
+    }
+    to: {
+	transform: scale(1);
+	opacity: 1;
+    }
+}
+
+::view-transition-old(root) {
+    animation-name: zoomer-out;
+}
+::view-transition-new(root) {
+    animation-name: zoomer-in;
+}
+
+div {
+    font-family: var(--font-pixelify-sans);
+}

@@ -23,8 +23,9 @@ export default {
         },
       },
       animation: {
-        fadeIn: "fadeIn 150ms ease-in-out forwards",
-        // duration: 500ms, delay: 1s,
+        // duration: 500ms, delay: 100ms
+        fadeIn: "fadeIn 500ms ease-in-out 100ms forwards",
+        // duration: 500ms, delay: 100ms,
         slideInN200: "slideInN200 500ms ease-in-out 100ms forwards",
       },
     },
