@@ -12,34 +12,35 @@ import { index, int, sqliteTableCreator, text } from "drizzle-orm/sqlite-core";
  */
 export const createTable = sqliteTableCreator((name) => `jmnuf-page_${name}`);
 
-type Branded<T, U extends string> = T & { __branding__: U }
+type Branded<T, U extends string> = T & { __branding__: U };
 
 type PostID = Branded<number, "post_id">;
 
 export const posts = createTable(
   "post",
   {
-    id: int("id", { mode: "number" }).$type<PostID>().primaryKey({ autoIncrement: true }),
+    id: int("id", { mode: "number" })
+      .$type<PostID>()
+      .primaryKey({ autoIncrement: true }),
     name: text("name", { length: 256 }),
     createdAt: int("created_at", { mode: "timestamp" })
       .default(sql`(unixepoch())`)
       .notNull(),
     updatedAt: int("updated_at", { mode: "timestamp" }).$onUpdate(
-      () => new Date()
+      () => new Date(),
     ),
   },
   (example) => ({
     nameIndex: index("name_idx").on(example.name),
-  })
+  }),
 );
 
 type ViewsID = Branded<number, "views_id">;
 
-export const views = createTable(
-    "page_views",
-    {
-	id: int("id", { mode: "number" }).$type<ViewsID>().primaryKey({ autoIncrement: true }),
-	page: text("page").notNull(),
-	count: int("count").default(0),
-    }
-);
+export const views = createTable("page_views", {
+  id: int("id", { mode: "number" })
+    .$type<ViewsID>()
+    .primaryKey({ autoIncrement: true }),
+  page: text("page").notNull(),
+  count: int("count").default(0),
+});
