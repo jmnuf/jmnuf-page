@@ -3,6 +3,13 @@ import "~/styles/globals.css";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
+import {
+  CircleSVG,
+  CaretFilledUpSVG,
+  CaretFilledDownSVG,
+  CaretFilledLeftSVG,
+  CaretFilledRightSVG,
+} from "~/app/_components/icons";
 import { TRPCReactProvider } from "~/trpc/react";
 
 export const metadata: Metadata = {
@@ -15,7 +22,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const foycon_classes =
-    "col-span-1 h-full bg-purple-600 border-[6px] border-black";
+    "flex flex-col items-center justify-around col-span-1 h-full bg-purple-600 border-[6px] border-black";
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body className="grid min-h-[100vh] w-full grid-cols-1 grid-rows-12 bg-slate-300">
@@ -25,7 +32,29 @@ export default function RootLayout({
               {/* foycon left */}
               <div
                 className={`${foycon_classes} animate-slideInN200 rounded-l-[25px] border-r`}
-              ></div>
+              >
+                <div className="flex h-[70px] w-[70px] items-center justify-center rounded-full border-2 border-black bg-slate-500">
+                  <div className="flex h-[60px] w-[60px] items-center justify-center rounded-full border-2 border-black bg-slate-700">
+                    <CircleSVG size="30px" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 grid-rows-3">
+                  <button className="col-span-1 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
+                    <CaretFilledLeftSVG size="30px" />
+                  </button>
+                  <div className="col-span-1 row-span-3 grid grid-rows-subgrid">
+                    <button className="col-span-1 row-start-1 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
+                      <CaretFilledUpSVG size="30px" />
+                    </button>
+                    <button className="col-span-1 row-start-3 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
+                      <CaretFilledDownSVG size="30px" />
+                    </button>
+                  </div>
+                  <button className="col-span-1 col-start-3 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
+                    <CaretFilledRightSVG size="30px" />
+                  </button>
+                </div>
+              </div>
               {/* -- Screen -- */}
               <div className="col-span-6 h-full border-4 border-black">
                 <div className="flex h-full w-full border-8 border-slate-600 transition-[background-color] delay-150 duration-[1s]">
@@ -37,7 +66,37 @@ export default function RootLayout({
               {/* foycon right */}
               <div
                 className={`${foycon_classes} animate-[slideInN200_1.25s_ease-in-out_forwards] rounded-r-[25px] border-l delay-[1.5s]`}
-              ></div>
+              >
+                <div className="grid grid-cols-3 grid-rows-3">
+                  <button className="col-span-1 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
+                    <span className="m-0 h-[30px] w-[30px] p-1 text-slate-300">
+                      {"Y"}
+                    </span>
+                  </button>
+                  <div className="col-span-1 row-span-3 grid grid-rows-subgrid">
+                    <button className="col-span-1 row-start-1 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
+                      <span className="m-0 h-[30px] w-[30px] p-1 text-slate-300">
+                        {"X"}
+                      </span>
+                    </button>
+                    <button className="col-span-1 row-start-3 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
+                      <span className="m-0 h-[30px] w-[30px] p-1 text-slate-300">
+                        {"B"}
+                      </span>
+                    </button>
+                  </div>
+                  <button className="col-span-1 col-start-3 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
+                    <span className="m-0 h-[30px] w-[30px] p-1 text-slate-300">
+                      {"A"}
+                    </span>
+                  </button>
+                </div>
+                <div className="flex h-[70px] w-[70px] items-center justify-center rounded-full border-2 border-black bg-slate-500">
+                  <div className="flex h-[60px] w-[60px] items-center justify-center rounded-full border-2 border-black bg-slate-700">
+                    <CircleSVG size="30px" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <footer className="row-span-1 flex w-full flex-col items-center justify-center bg-slate-600 px-4 pb-1 pt-2 text-sm text-slate-100">

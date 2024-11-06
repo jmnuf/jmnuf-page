@@ -94,6 +94,62 @@ export const CaretRightSVG: IconComponent = ({ size }) => {
   );
 };
 
+export const CaretFilledRightSVG: IconComponent = ({ size }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="Bold"
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+    >
+      <path d="M9,17.879V6.707A1,1,0,0,1,10.707,6l5.586,5.586a1,1,0,0,1,0,1.414l-5.586,5.586A1,1,0,0,1,9,17.879Z" />
+    </svg>
+  );
+};
+
+export const CaretFilledLeftSVG: IconComponent = ({ size }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="Bold"
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+    >
+      <path d="M13.293,18.586,7.707,13a1,1,0,0,1,0-1.414L13.293,6A1,1,0,0,1,15,6.707V17.879A1,1,0,0,1,13.293,18.586Z" />
+    </svg>
+  );
+};
+
+export const CaretFilledUpSVG: IconComponent = ({ size }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="Bold"
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+    >
+      <path d="M6.414,15.586H17.586a1,1,0,0,0,.707-1.707L12.707,8.293a1,1,0,0,0-1.414,0L5.707,13.879A1,1,0,0,0,6.414,15.586Z" />
+    </svg>
+  );
+};
+
+export const CaretFilledDownSVG: IconComponent = ({ size }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="Bold"
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+    >
+      <path d="M6.414,9H17.586a1,1,0,0,1,.707,1.707l-5.586,5.586a1,1,0,0,1-1.414,0L5.707,10.707A1,1,0,0,1,6.414,9Z" />
+    </svg>
+  );
+};
+
 export const CircleSVG: IconComponent = ({ size }) => {
   return (
     <svg
