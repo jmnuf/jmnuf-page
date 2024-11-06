@@ -12,6 +12,7 @@ import { Time } from "~/app/_components/general_view";
 
 export const metadata: Metadata = {
   title: "@jmnuf",
+  description: "Programmer jm's foycons",
 };
 
 export default async function Home() {
@@ -52,7 +53,9 @@ export default async function Home() {
             image={<ScreenPlaySVG size={svgSize} />}
           />
           <GameSlot
-            title="Error 404"
+            title="X (formerly Twitter)"
+            href="https://x.com/jmnuf_"
+            target="_blank"
             image={<DocumentCircleWrongSVG size={svgSize} />}
           />
         </div>
