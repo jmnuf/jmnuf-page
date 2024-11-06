@@ -14,7 +14,7 @@ export const ledBoard = localFont({
   display: "swap",
 });
 
-const infoBlobNames = ["gen", "prog-lang", "nat-lang"] as const;
+const infoBlobNames = ["gen", "prog-lang", "fav-projs", "nat-lang"] as const;
 type InfoBlobName = (typeof infoBlobNames)[number];
 
 export function Tamagotchi() {
@@ -78,6 +78,8 @@ export function InfoDisplay({ info }: { info: InfoBlobName }) {
     return <ProgrammingInfo />;
   } else if (info == "nat-lang") {
     return <NaturalLangsInfo />;
+  } else if (info == "fav-projs") {
+    return <MyFavoriteProjects />;
   }
 }
 
@@ -114,11 +116,51 @@ function ProgrammingInfo() {
 function NaturalLangsInfo() {
   return (
     <>
-      <h2 className="text-2xl">Talks In</h2>
-      <p>Bilingual</p>
+      <h2 className="text-2xl">Spoken Languages</h2>
+      <p>Bilingual/Native in</p>
       <ul className="text-md w-full pl-2">
         <li>- English</li>
         <li>- Spanish</li>
+      </ul>
+    </>
+  );
+}
+
+function MyFavoriteProjects() {
+  return (
+    <>
+      <h2>My Fav Personal Projects</h2>
+      <ul>
+        <li>
+          -{" "}
+          <a
+            href="https://github.com/jmnuf/kinoko"
+            target="_blank"
+            rel="noreferrer nofollow"
+          >
+            kinoko
+          </a>
+        </li>
+        <li>
+          -{" "}
+          <a
+            href="https://github.com/jmnuf/grop"
+            target="_blank"
+            rel="noreferrer nofollow"
+          >
+            grop
+          </a>
+        </li>
+        <li>
+          -{" "}
+          <a
+            href="https://github.com/jmnuf/yielder"
+            target="_blank"
+            rel="noreferrer nofollow"
+          >
+            yielder
+          </a>
+        </li>
       </ul>
     </>
   );
