@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { HomeSVG } from "~/app/_components/icons";
 import { Tamagotchi } from "~/app/_components/about-sections";
 
 export default async function About() {
@@ -15,8 +16,8 @@ export default async function About() {
         <Tamagotchi />
       </div>
       <div className="row-span-1 flex">
-        <Link className="text-sm" href="/">
-          {"<Home>"}
+        <Link href="/">
+          <HomeSVG size="30px" />
         </Link>
       </div>
     </div>
