@@ -20,15 +20,15 @@ type InfoBlobName = (typeof infoBlobNames)[number];
 export function Tamagotchi() {
   const [infoIndex, setInfoIndex] = useState(0);
   const [nextInfoIndex, setNextInfoIndex] = useState(0);
-  const infoName = infoBlobNames[infoIndex];
+  const infoName = infoBlobNames[infoIndex]!;
   const [opacity, setOpacity] = useState(0);
   useEffect(() => {
     setOpacity(0);
-    let timeId = setTimeout(() => setInfoIndex(nextInfoIndex), 150);
+    const timeId = setTimeout(() => setInfoIndex(nextInfoIndex), 150);
     return () => clearTimeout(timeId);
   }, [nextInfoIndex]);
   useEffect(() => {
-    let timeId = setTimeout(() => setOpacity(100), 150);
+    const timeId = setTimeout(() => setOpacity(100), 150);
     return () => clearTimeout(timeId);
   }, [infoIndex]);
 

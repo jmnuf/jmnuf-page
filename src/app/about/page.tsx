@@ -4,6 +4,11 @@ import Link from "next/link";
 import { HomeSVG } from "~/app/_components/icons";
 import { Tamagotchi } from "~/app/_components/about-sections";
 
+export const metadata: Metadata = {
+  title: "About @jmnuf",
+  description: "About programmer JM",
+};
+
 export default async function About() {
   return (
     <div className="grid h-full w-full animate-fadeIn grid-cols-1 grid-rows-10 gap-1 opacity-0">
