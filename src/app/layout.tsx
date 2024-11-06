@@ -18,9 +18,9 @@ export default function RootLayout({
     "col-span-1 h-full bg-purple-600 border-[6px] border-black";
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body>
+      <body className="grid min-h-[100vh] w-full grid-cols-1 grid-rows-12 bg-slate-300">
         <TRPCReactProvider>
-          <div className="flex h-[100vh] w-full items-center justify-center bg-slate-300">
+          <div className="row-span-11 flex h-full min-h-[] w-full flex-col items-center justify-center">
             <div className="grid h-1/2 max-h-[60%] w-3/4 min-w-[720px] grid-cols-8 gap-0">
               {/* foycon left */}
               <div
@@ -40,13 +40,19 @@ export default function RootLayout({
               ></div>
             </div>
           </div>
+          <footer className="row-span-1 flex w-full flex-col items-center justify-center bg-slate-600 px-4 pb-1 pt-2 text-sm text-slate-100">
+            <p>
+              {"Uicons by "}
+              <a href="https://www.flaticon.com/uicons" className="underline">
+                Flaticon
+              </a>
+            </p>
+            <p>
+              &copy; 2023 - {new Date().getFullYear()} jmnuf.app - All Rights
+              Reserved
+            </p>
+          </footer>
         </TRPCReactProvider>
-        <footer className="absolute bottom-0 left-0 flex w-full items-center justify-center bg-slate-600 px-4 pb-1 pt-2 text-slate-100">
-          <p>
-            {"Uicons by "}
-            <a href="https://www.flaticon.com/uicons">Flaticon</a>
-          </p>
-        </footer>
       </body>
     </html>
   );
