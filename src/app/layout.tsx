@@ -20,8 +20,8 @@ export default function RootLayout({
     <html lang="en" className={`${GeistSans.variable}`}>
       <body className="grid min-h-[100vh] w-full grid-cols-1 grid-rows-12 bg-slate-300">
         <TRPCReactProvider>
-          <div className="row-span-11 flex h-full min-h-[] w-full flex-col items-center justify-center">
-            <div className="grid h-1/2 max-h-[60%] w-3/4 min-w-[720px] grid-cols-8 gap-0">
+          <div className="row-span-11 flex h-full w-full flex-col items-center justify-center">
+            <div className="grid h-1/2 h-[450px] w-3/4 min-w-[720px] grid-cols-8 gap-0">
               {/* foycon left */}
               <div
                 className={`${foycon_classes} animate-slideInN200 rounded-l-[25px] border-r`}
