@@ -39,18 +39,18 @@ export default function RootLayout({
                   </div>
                 </div>
                 <div className="grid grid-cols-3 grid-rows-3">
-                  <button className="col-span-1 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
+                  <button className="col-span-1 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:fill-white">
                     <CaretFilledLeftSVG size="30px" />
                   </button>
                   <div className="col-span-1 row-span-3 grid grid-rows-subgrid">
-                    <button className="col-span-1 row-start-1 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
+                    <button className="col-span-1 row-start-1 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:fill-white">
                       <CaretFilledUpSVG size="30px" />
                     </button>
-                    <button className="col-span-1 row-start-3 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
+                    <button className="col-span-1 row-start-3 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:fill-white">
                       <CaretFilledDownSVG size="30px" />
                     </button>
                   </div>
-                  <button className="col-span-1 col-start-3 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
+                  <button className="col-span-1 col-start-3 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:fill-white">
                     <CaretFilledRightSVG size="30px" />
                   </button>
                 </div>
@@ -68,27 +68,19 @@ export default function RootLayout({
                 className={`${foycon_classes} animate-[slideInN200_1.25s_ease-in-out_forwards] rounded-r-[25px] border-l delay-[1.5s]`}
               >
                 <div className="grid grid-cols-3 grid-rows-3">
-                  <button className="col-span-1 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
-                    <span className="m-0 h-[30px] w-[30px] p-1 text-slate-300">
-                      {"Y"}
-                    </span>
+                  <button className="col-span-1 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:text-white">
+                    <span className="m-0 h-[30px] w-[30px] p-1">{"Y"}</span>
                   </button>
                   <div className="col-span-1 row-span-3 grid grid-rows-subgrid">
-                    <button className="col-span-1 row-start-1 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
-                      <span className="m-0 h-[30px] w-[30px] p-1 text-slate-300">
-                        {"X"}
-                      </span>
+                    <button className="col-span-1 row-start-1 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:text-white">
+                      <span className="m-0 h-[30px] w-[30px] p-1">{"X"}</span>
                     </button>
-                    <button className="col-span-1 row-start-3 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
-                      <span className="m-0 h-[30px] w-[30px] p-1 text-slate-300">
-                        {"B"}
-                      </span>
+                    <button className="col-span-1 row-start-3 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:text-white">
+                      <span className="m-0 h-[30px] w-[30px] p-1">{"B"}</span>
                     </button>
                   </div>
-                  <button className="col-span-1 col-start-3 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-black bg-slate-600">
-                    <span className="m-0 h-[30px] w-[30px] p-1 text-slate-300">
-                      {"A"}
-                    </span>
+                  <button className="col-span-1 col-start-3 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:text-white">
+                    <span className="m-0 h-[30px] w-[30px] p-1">{"A"}</span>
                   </button>
                 </div>
                 <div className="flex h-[70px] w-[70px] items-center justify-center rounded-full border-2 border-black bg-slate-500">
