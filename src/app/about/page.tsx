@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { HomeSVG } from "~/app/_components/icons";
-import { Tamagotchi } from "~/app/_components/about-sections";
+import { InfoContent } from "~/app/_components/about-sections";
 
 export const metadata: Metadata = {
   title: "About @jmnuf",
@@ -11,18 +11,19 @@ export const metadata: Metadata = {
 
 export default async function About() {
   return (
-    <div className="grid h-full w-full animate-fadeIn grid-cols-1 grid-rows-10 gap-1 opacity-0">
-      <div className="row-span-1 flex text-center">
-        <h1 id="about-h" className="text-bold text-3xl">
+    <div className="flex h-full w-full animate-fadeIn flex-col justify-between gap-1 overflow-y-scroll bg-slate-100 p-4 opacity-0">
+      <div className="b-1 flex h-[10%] p-1 text-center">
+        <h1 id="about-h" className="text-bold text-5xl">
           About
         </h1>
       </div>
-      <div className="row-span-8 flex items-center justify-center">
-        <Tamagotchi />
-      </div>
-      <div className="row-span-1 flex">
+      <InfoContent />
+      <div className="flex h-[10%]">
         <Link href="/">
-          <HomeSVG size="30px" />
+          <HomeSVG
+            size="30px"
+            className="fill-neutral-500 hover:fill-cyan-400"
+          />
         </Link>
       </div>
     </div>

@@ -1,9 +1,10 @@
-type IconComponent = React.FC<{ size: string | number }>;
+type IconComponent = React.FC<{ size: string | number; className?: string }>;
 
 // https://www.flaticon.com/free-icon-font/battery-quarter_9234402?page=1&position=4&term=battery&origin=search&related_id=9234402
-export const LowBatterySVG: IconComponent = ({ size }) => {
+export const LowBatterySVG: IconComponent = ({ size, className }) => {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       id="Layer_1"
       data-name="Layer 1"
@@ -17,9 +18,10 @@ export const LowBatterySVG: IconComponent = ({ size }) => {
 };
 
 // https://www.flaticon.com/free-icon-font/code-branch_8778004?page=1&position=2&term=git&origin=search&related_id=8778004
-export const GitBranchSVG: IconComponent = ({ size }) => {
+export const GitBranchSVG: IconComponent = ({ size, className }) => {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       id="Layer_1"
       data-name="Layer 1"
@@ -33,9 +35,10 @@ export const GitBranchSVG: IconComponent = ({ size }) => {
 };
 
 // https://www.flaticon.com/free-icon-font/screen-play_17818979?page=1&position=69&term=screen&origin=search&related_id=17818979
-export const ScreenPlaySVG: IconComponent = ({ size }) => {
+export const ScreenPlaySVG: IconComponent = ({ size, className }) => {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       id="Layer_1"
       data-name="Layer 1"
@@ -49,9 +52,10 @@ export const ScreenPlaySVG: IconComponent = ({ size }) => {
 };
 
 // https://www.flaticon.com/free-icon-font/document-circle-wrong_15851968?page=1&position=17&term=cancel&origin=search&related_id=15851968
-export const DocumentCircleWrongSVG: IconComponent = ({ size }) => {
+export const DocumentCircleWrongSVG: IconComponent = ({ size, className }) => {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       id="Layer_1"
       data-name="Layer 1"
@@ -64,9 +68,10 @@ export const DocumentCircleWrongSVG: IconComponent = ({ size }) => {
   );
 };
 
-export const CaretLeftSVG: IconComponent = ({ size }) => {
+export const CaretLeftSVG: IconComponent = ({ size, className }) => {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       id="Layer_1"
       data-name="Layer 1"
@@ -79,9 +84,10 @@ export const CaretLeftSVG: IconComponent = ({ size }) => {
   );
 };
 
-export const CaretRightSVG: IconComponent = ({ size }) => {
+export const CaretRightSVG: IconComponent = ({ size, className }) => {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       id="Layer_1"
       data-name="Layer 1"
@@ -94,9 +100,10 @@ export const CaretRightSVG: IconComponent = ({ size }) => {
   );
 };
 
-export const CaretFilledRightSVG: IconComponent = ({ size }) => {
+export const CaretFilledRightSVG: IconComponent = ({ size, className }) => {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       id="Bold"
       viewBox="0 0 24 24"
@@ -108,9 +115,10 @@ export const CaretFilledRightSVG: IconComponent = ({ size }) => {
   );
 };
 
-export const CaretFilledLeftSVG: IconComponent = ({ size }) => {
+export const CaretFilledLeftSVG: IconComponent = ({ size, className }) => {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       id="Bold"
       viewBox="0 0 24 24"
@@ -122,9 +130,10 @@ export const CaretFilledLeftSVG: IconComponent = ({ size }) => {
   );
 };
 
-export const CaretFilledUpSVG: IconComponent = ({ size }) => {
+export const CaretFilledUpSVG: IconComponent = ({ size, className }) => {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       id="Bold"
       viewBox="0 0 24 24"
@@ -136,9 +145,10 @@ export const CaretFilledUpSVG: IconComponent = ({ size }) => {
   );
 };
 
-export const CaretFilledDownSVG: IconComponent = ({ size }) => {
+export const CaretFilledDownSVG: IconComponent = ({ size, className }) => {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       id="Bold"
       viewBox="0 0 24 24"
@@ -150,9 +160,10 @@ export const CaretFilledDownSVG: IconComponent = ({ size }) => {
   );
 };
 
-export const CircleSVG: IconComponent = ({ size }) => {
+export const CircleSVG: IconComponent = ({ size, className }) => {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       id="Layer_1"
       data-name="Layer 1"
@@ -165,9 +176,10 @@ export const CircleSVG: IconComponent = ({ size }) => {
   );
 };
 
-export const HomeSVG: IconComponent = ({ size }) => {
+export const HomeSVG: IconComponent = ({ size, className }) => {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       id="Layer_1"
       data-name="Layer 1"

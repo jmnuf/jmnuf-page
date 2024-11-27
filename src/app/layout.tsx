@@ -25,7 +25,7 @@ export default function RootLayout({
     "flex flex-col items-center justify-around col-span-1 h-full bg-purple-600 border-[6px] border-black";
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body className="grid min-h-[100vh] w-full grid-cols-1 grid-rows-12 bg-slate-300">
+      <body className="grid h-[100dvh] max-h-[100vh] w-full grid-cols-1 grid-rows-12 overflow-hidden bg-slate-300">
         <TRPCReactProvider>
           <div className="row-span-11 flex h-full w-full flex-col items-center justify-center">
             <div className="grid h-1/2 h-[450px] w-3/4 min-w-[720px] grid-cols-8 gap-0">
@@ -56,7 +56,7 @@ export default function RootLayout({
                 </div>
               </div>
               {/* -- Screen -- */}
-              <div className="col-span-6 h-full border-4 border-black">
+              <div className="col-span-6 h-[450px] border-4 border-black">
                 <div className="flex h-full w-full border-8 border-slate-600 transition-[background-color] delay-150 duration-[1s]">
                   <div className="flex h-full w-full animate-[fadeIn_500ms_ease-in_1s_forwards] p-1 opacity-0">
                     {children}
