@@ -189,6 +189,17 @@ function MyFavoriteProjects() {
         <li>
           -{" "}
           <a
+            href="https://github.com/jmnuf/randart"
+            target="_blank"
+            rel="noreferrer nofollow"
+            className={linkClasses}
+          >
+            RandArt
+          </a>
+        </li>
+        <li>
+          -{" "}
+          <a
             href="https://github.com/jmnuf/kinoko"
             target="_blank"
             rel="noreferrer nofollow"
@@ -206,17 +217,6 @@ function MyFavoriteProjects() {
             className={linkClasses}
           >
             grop
-          </a>
-        </li>
-        <li>
-          -{" "}
-          <a
-            href="https://github.com/jmnuf/yielder"
-            target="_blank"
-            rel="noreferrer nofollow"
-            className={linkClasses}
-          >
-            yielder
           </a>
         </li>
       </ul>
