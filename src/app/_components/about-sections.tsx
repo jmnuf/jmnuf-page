@@ -157,10 +157,15 @@ function ProgrammingInfo() {
       <ul className="text-md w-full pl-2 md:text-xl">
         <li>- JavaScript / TypeScript</li>
         <li>- Rust</li>
-        <li>- Go</li>
-        <li>- Java</li>
-        <li>- Godot</li>
-        <li>- C#</li>
+        <li>- C3</li>
+      </ul>
+      <h2 className="text-2xl md:text-4xl">Technologies Known</h2>
+      <ul className="text-md w-full pl-2 md:text-xl">
+        <li>- Node.JS</li>
+        <li>- Next.JS</li>
+        <li>- React</li>
+        <li>- Solid</li>
+        <li>- Astro</li>
       </ul>
     </>
   );
