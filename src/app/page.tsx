@@ -53,8 +53,8 @@ export default async function Home() {
             image={<ScreenPlaySVG size={svgSize} />}
           />
           <GameSlot
-            title="X (formerly Twitter)"
-            href="https://x.com/jmnuf_"
+            title="Me Ranting"
+            href="https://blog.jmnuf.app"
             target="_blank"
             image={<DocumentCircleWrongSVG size={svgSize} />}
           />
