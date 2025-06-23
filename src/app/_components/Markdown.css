@@ -1,0 +1,26 @@
+.markdown {
+  & h2 {
+    text-decoration-color: #F0F0F0;
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+  }
+
+  & ul {
+    list-style-type: disc;
+    padding-left: 1rem;
+  }
+
+  & td, &th {
+    text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  & thead {
+    border-bottom: 1px solid #F3F3F3;
+  }
+
+}
+
+
+

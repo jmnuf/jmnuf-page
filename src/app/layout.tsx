@@ -14,10 +14,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body className="flex flex-col min-h-[100dvh] max-h-[100vh] bg-fuchsia-900 text-violet-200">
+      <body className="relative flex flex-col min-h-[100dvh] max-h-[100vh] bg-fuchsia-900 text-violet-200">
 				  <div className="flex flex-col">
 					  {children}
 					</div>
+          <footer className="w-full text-slate-100 text-sm flex flex-col justify-content items-center text-center py-4">
+            <p>&copy; 2023-{(new Date()).getFullYear()} jmnuf.app - All rights reserved</p>
+          </footer>
       </body>
     </html>
   );
