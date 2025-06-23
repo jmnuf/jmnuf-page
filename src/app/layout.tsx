@@ -1,16 +1,7 @@
-import "~/styles/globals.css";
+import "./globals.css";
 
 import { GeistSans } from "geist/font/sans";
-import { type Metadata } from "next";
-
-import {
-  CircleSVG,
-  CaretFilledUpSVG,
-  CaretFilledDownSVG,
-  CaretFilledLeftSVG,
-  CaretFilledRightSVG,
-} from "~/app/_components/icons";
-import { TRPCReactProvider } from "~/trpc/react";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "@jmnuf",
@@ -21,89 +12,12 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const foycon_classes =
-    "flex flex-col items-center justify-around col-span-1 h-full bg-purple-600 border-[6px] border-black";
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body className="grid h-[100dvh] max-h-[100vh] w-full grid-cols-1 grid-rows-12 overflow-hidden bg-slate-300">
-        <TRPCReactProvider>
-          <div className="row-span-11 flex h-full w-full flex-col items-center justify-center">
-            <div className="grid h-1/2 h-[450px] w-3/4 min-w-[720px] grid-cols-8 gap-0">
-              {/* foycon left */}
-              <div
-                className={`${foycon_classes} animate-slideInN200 rounded-l-[25px] border-r`}
-              >
-                <div className="flex h-[70px] w-[70px] items-center justify-center rounded-full border-2 border-black bg-slate-500">
-                  <div className="flex h-[60px] w-[60px] items-center justify-center rounded-full border-2 border-black bg-slate-700">
-                    <CircleSVG size="30px" />
-                  </div>
-                </div>
-                <div className="grid grid-cols-3 grid-rows-3">
-                  <button className="col-span-1 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:fill-white">
-                    <CaretFilledLeftSVG size="30px" />
-                  </button>
-                  <div className="col-span-1 row-span-3 grid grid-rows-subgrid">
-                    <button className="col-span-1 row-start-1 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:fill-white">
-                      <CaretFilledUpSVG size="30px" />
-                    </button>
-                    <button className="col-span-1 row-start-3 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:fill-white">
-                      <CaretFilledDownSVG size="30px" />
-                    </button>
-                  </div>
-                  <button className="col-span-1 col-start-3 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:fill-white">
-                    <CaretFilledRightSVG size="30px" />
-                  </button>
-                </div>
-              </div>
-              {/* -- Screen -- */}
-              <div className="col-span-6 h-[450px] border-4 border-black">
-                <div className="flex h-full w-full border-8 border-slate-600 transition-[background-color] delay-150 duration-[1s]">
-                  <div className="flex h-full w-full animate-[fadeIn_500ms_ease-in_1s_forwards] p-1 opacity-0">
-                    {children}
-                  </div>
-                </div>
-              </div>
-              {/* foycon right */}
-              <div
-                className={`${foycon_classes} animate-[slideInN200_1.25s_ease-in-out_forwards] rounded-r-[25px] border-l delay-[1.5s]`}
-              >
-                <div className="grid grid-cols-3 grid-rows-3">
-                  <button className="col-span-1 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:text-white">
-                    <span className="m-0 h-[30px] w-[30px] p-1">{"Y"}</span>
-                  </button>
-                  <div className="col-span-1 row-span-3 grid grid-rows-subgrid">
-                    <button className="col-span-1 row-start-1 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:text-white">
-                      <span className="m-0 h-[30px] w-[30px] p-1">{"X"}</span>
-                    </button>
-                    <button className="col-span-1 row-start-3 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:text-white">
-                      <span className="m-0 h-[30px] w-[30px] p-1">{"B"}</span>
-                    </button>
-                  </div>
-                  <button className="col-span-1 col-start-3 row-span-1 row-start-2 flex items-center justify-center rounded-full border-2 border-slate-900 bg-slate-600 hover:border-slate-200 active:border-black active:bg-slate-800 active:text-white">
-                    <span className="m-0 h-[30px] w-[30px] p-1">{"A"}</span>
-                  </button>
-                </div>
-                <div className="flex h-[70px] w-[70px] items-center justify-center rounded-full border-2 border-black bg-slate-500">
-                  <div className="flex h-[60px] w-[60px] items-center justify-center rounded-full border-2 border-black bg-slate-700">
-                    <CircleSVG size="30px" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <footer className="row-span-1 flex w-full flex-col items-center justify-center bg-slate-600 px-4 pb-1 pt-2 text-sm text-slate-100">
-            <p>
-              {"Uicons by "}
-              <a href="https://www.flaticon.com/uicons" className="underline">
-                Flaticon
-              </a>
-            </p>
-            <p>
-              &copy; 2023 - {new Date().getFullYear()} jmnuf.app - All Rights
-              Reserved
-            </p>
-          </footer>
-        </TRPCReactProvider>
+      <body className="flex flex-col min-h-[100dvh] max-h-[100vh] bg-fuchsia-900 text-violet-200">
+				  <div className="flex flex-col">
+					  {children}
+					</div>
       </body>
     </html>
   );
