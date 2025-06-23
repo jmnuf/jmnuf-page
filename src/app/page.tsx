@@ -56,7 +56,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="grid h-[12rem] grid-cols-2 grid-rows-1 gap-2 rounded bg-gray-900 px-4 py-2 md:grid-cols-3">
+      <div className="grid min-h-[12rem] grid-cols-2 grid-rows-1 gap-2 rounded bg-gray-900 px-4 py-2 md:grid-cols-3">
         <BattleTextBox />
       </div>
     </div>

@@ -10,8 +10,12 @@
     padding-left: 1rem;
   }
 
+  & table {
+    width: 100%;
+  }
+
   & td,
-  &th {
+  & th {
     text-align: center;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -19,5 +23,29 @@
 
   & thead {
     border-bottom: 1px solid #f3f3f3;
+  }
+
+  /* On small screens, collapse table into a single column */
+  @media (max-width: 767px) {
+    & table,
+    & thead,
+    & tbody,
+    & th,
+    & td,
+    & tr {
+      display: block;
+      width: 100%;
+    }
+
+    & tr:not(:last-child) {
+      padding: 0.25rem;
+      border-bottom: 1px dotted #c3c3c3;
+    }
+
+    & td {
+      border: none;
+      padding: 0.25rem 0;
+      text-align: left;
+    }
   }
 }

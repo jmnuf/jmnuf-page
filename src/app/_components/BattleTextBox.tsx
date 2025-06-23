@@ -4,7 +4,49 @@ import Markdown from "./Markdown";
 import BattleOptions from "./battle-options";
 import type { BattleOptionType } from "./battle-options";
 
-type ContentType = "skills" | "tech" | "frameworks" | "libs" | "exp" | "run";
+type ContentType = keyof typeof CONTENTS_MAP | "run";
+
+const CONTENTS_MAP = {
+  skills: `
+- Bilingual (English/Ingles & Spanish/Español)
+- Organizational: ie. Design doc writing, team planning, efficient in info delivery
+- Eyes for simplicity: Will always attempt to keep systems simple to keep the work from complecting too much
+- AI assisted dev: I know how to leverage AI to make me more productive and efficient
+`,
+
+  tech: `
+## Always Learning!
+JM is always open to learn new technologies, whether it be frameworks or libraries.
+
+He has already done some projects with some frameworks/libraries though. Always quick to uptake and very self-driven for learning new things!
+`,
+
+  frameworks: `
+| Some Known Frameworks | |
+| - | - |
+| NextJS       | Express            |
+| SolidJS      | Astro              |
+| Electron     | Tauri              |
+| React Native | EGui (Rust UI)     |
+`,
+
+  libs: `
+| Some Known Libraries | |
+|    -     |        -        |
+|   React  | Tanstack Query  |
+|    Zod   |      Jotai      |
+|  JQuery  |   TailwindCSS   |
+`,
+
+  exp: `
+| Position                    | Time Spent     | Tech                          |
+|               -             |        -       |              -                |
+| Frontend Dev (Contractor)   | 1 month, 2025  | React/TypeScript              |
+| Full Stack Dev (Contractor) | 2 months, 2025 | Node/Next/TypeScript          |
+| Frontend Dev (Contractor)   | 2 months, 2024 | WordPress/JavaScript          |
+| Full Stack Dev (Full time)  | 2022 - 2023    | JavaScript/Python/Godot/Mongo |
+`,
+} as const;
 
 const BASE_TEXT =
   "Software Developer, JM is ready for conquest! What are you inspecting?";
@@ -129,55 +171,6 @@ function TextContent({
   type: ContentType;
   runAttempt: number;
 }) {
-  if (type === "skills") {
-    return (
-      <Markdown>
-        {`
-- Bilingual (English/Ingles & Spanish/Español)
-- Organizational: ie. Design doc writing, team planning, efficient in info delivery
-- Eyes for simplicity: Will always attempt to keep systems simple to keep the work from complecting too much
-- AI assisted dev: I know how to leverage AI not to code for me but to make me and others more productive
-`}
-      </Markdown>
-    );
-  }
-
-  if (type === "tech") {
-    return (
-      <Markdown>{`
-## Always Learning!
-JM is always open to learn new technologies, whether it be frameworks or libraries.
-
-He has already done some projects with some frameworks/libraries though. Always quick to uptake and very self-driven for learning new things!
-`}</Markdown>
-    );
-  }
-
-  if (type === "frameworks") {
-    return (
-      <Markdown>
-        {`
-| Known Frameworks | |
-| - | - |
-| NextJS  | Express |
-| SolidJS | Astro  | 
-`}
-      </Markdown>
-    );
-  }
-
-  if (type === "libs") {
-    return (
-      <Markdown>
-        {`
-| Known Libraries | |
-| - | - |
-| React | Tanstack Query |
-`}
-      </Markdown>
-    );
-  }
-
   if (type === "run") {
     const counter = runAttempt === 1 ? "" : ` (x${runAttempt})`;
     return (
@@ -186,5 +179,9 @@ He has already done some projects with some frameworks/libraries though. Always 
       </Markdown>
     );
   }
-  return null;
+
+  const content = CONTENTS_MAP[type];
+  if (!content) return null;
+
+  return <Markdown>{content}</Markdown>;
 }
