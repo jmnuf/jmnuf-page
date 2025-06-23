@@ -10,10 +10,7 @@ interface MarkdownProps {
 export default function Markdown({ children }: MarkdownProps) {
   return (
     <div className="markdown">
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>
-        {children}
-      </ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>{children}</ReactMarkdown>
     </div>
   );
 }
-

@@ -33,13 +33,13 @@ export function Tamagotchi() {
   }, [infoIndex]);
 
   return (
-    <div className="flex h-full w-[300px] flex-col items-center rounded-b-[50%] rounded-t-[100%] border-4 border-black bg-red-800">
+    <div className="flex h-full w-[300px] flex-col items-center rounded-t-[100%] rounded-b-[50%] border-4 border-black bg-red-800">
       <div className="invisible py-6"></div>
       <div
         className={`${ledBoard.className} flex h-[180px] w-[200px] flex-col rounded-2xl rounded-t-3xl border-2 border-black bg-slate-200 p-4 font-semibold`}
       >
         <div
-          className={`transition-all opacity-${opacity} overflow-y-auto overflow-x-clip text-wrap pl-1`}
+          className={`transition-all opacity-${opacity} overflow-x-clip overflow-y-auto pl-1 text-wrap`}
         >
           <InfoDisplay info={infoName} />
         </div>
@@ -91,7 +91,7 @@ export function InfoContent() {
   return (
     <div className={`flex h-[80%] max-h-full flex-row`}>
       <button
-        className="w-1/8 group my-auto h-[80%] rounded border border-solid border-black hover:border-cyan-400 hover:bg-white"
+        className="group my-auto h-[80%] w-1/8 rounded border border-solid border-black hover:border-cyan-400 hover:bg-white"
         onClick={() =>
           setNextInfoIndex((x) =>
             x - 1 < 0 ? infoBlobNames.length - 1 : x - 1,
@@ -101,12 +101,12 @@ export function InfoContent() {
         <CaretLeftSVG size="25px" className={caretSVGClasses} />
       </button>
       <div
-        className={`flex h-full w-full flex-col items-center transition-all opacity-${opacity} overflow-y-auto overflow-x-clip text-wrap pl-1`}
+        className={`flex h-full w-full flex-col items-center transition-all opacity-${opacity} overflow-x-clip overflow-y-auto pl-1 text-wrap`}
       >
         <InfoDisplay info={infoName} />
       </div>
       <button
-        className="w-1/8 group my-auto flex h-[80%] flex-row-reverse items-center rounded border border-solid border-black hover:border-cyan-400 hover:bg-slate-100 hover:bg-white"
+        className="group my-auto flex h-[80%] w-1/8 flex-row-reverse items-center rounded border border-solid border-black hover:border-cyan-400 hover:bg-slate-100 hover:bg-white"
         onClick={() =>
           setNextInfoIndex((x) => (x + 1 < infoBlobNames.length ? x + 1 : 0))
         }

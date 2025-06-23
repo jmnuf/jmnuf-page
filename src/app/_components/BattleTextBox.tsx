@@ -2,23 +2,20 @@
 import { useState } from "react";
 import Markdown from "./Markdown";
 import BattleOptions from "./battle-options";
-import type { BattleOptionType  } from "./battle-options";
+import type { BattleOptionType } from "./battle-options";
 
-type ContentType =
-  | "skills"
-  | "tech"
-  | "frameworks"
-  | "libs"
-  | "exp"
-  | "run";
+type ContentType = "skills" | "tech" | "frameworks" | "libs" | "exp" | "run";
 
-const BASE_TEXT = "Software Developer, JM is ready for conquest! What are you inspecting?";
+const BASE_TEXT =
+  "Software Developer, JM is ready for conquest! What are you inspecting?";
 
 export default function BattleTextBox() {
   const [text, setText] = useState(BASE_TEXT);
   const [runAttempts, setRunAttempts] = useState(0);
   const [content, setContent] = useState<ContentType | null>(null);
-  const [menuStack, setMenuStack] = useState<{ menu: BattleOptionType; content: ContentType | null }[]>([]);
+  const [menuStack, setMenuStack] = useState<
+    { menu: BattleOptionType; content: ContentType | null }[]
+  >([]);
 
   const pushMenuStack = (menu: BattleOptionType) => {
     setMenuStack([...menuStack, { menu, content }]);
@@ -33,8 +30,12 @@ export default function BattleTextBox() {
 
   return (
     <>
-      <div className="md:col-span-2 px-4 py-3 border border-2 border-slate-200">
-        {content == null ? text : <TextContent type={content} runAttempt={runAttempts} />}
+      <div className="border border-2 border-slate-200 px-4 py-3 md:col-span-2">
+        {content == null ? (
+          text
+        ) : (
+          <TextContent type={content} runAttempt={runAttempts} />
+        )}
       </div>
       <BattleOptions
         onOptionSelected={(event) => {
@@ -89,7 +90,6 @@ export default function BattleTextBox() {
               break;
           }
         }}
-
         onOptionFocus={(event) => {
           if (event.type !== "base") {
             return;
@@ -113,20 +113,26 @@ export default function BattleTextBox() {
               break;
           }
         }}
-
         onOptionBlur={(event) => {
           if (event.type !== "base") return;
           setText(BASE_TEXT);
         }}
       />
     </>
-  )
+  );
 }
 
-function TextContent({ type, runAttempt }: { type: ContentType, runAttempt: number }) {
+function TextContent({
+  type,
+  runAttempt,
+}: {
+  type: ContentType;
+  runAttempt: number;
+}) {
   if (type === "skills") {
     return (
-      <Markdown>{`
+      <Markdown>
+        {`
 - Bilingual (English/Ingles & Spanish/Español)
 - Organizational: ie. Design doc writing, team planning, efficient in info delivery
 - Eyes for simplicity: Will always attempt to keep systems simple to keep the work from complecting too much
@@ -149,7 +155,8 @@ He has already done some projects with some frameworks/libraries though. Always 
 
   if (type === "frameworks") {
     return (
-      <Markdown>{`
+      <Markdown>
+        {`
 | Known Frameworks | |
 | - | - |
 | NextJS  | Express |
@@ -161,7 +168,8 @@ He has already done some projects with some frameworks/libraries though. Always 
 
   if (type === "libs") {
     return (
-      <Markdown>{`
+      <Markdown>
+        {`
 | Known Libraries | |
 | - | - |
 | React | Tanstack Query |
@@ -180,5 +188,3 @@ He has already done some projects with some frameworks/libraries though. Always 
   }
   return null;
 }
-
-
