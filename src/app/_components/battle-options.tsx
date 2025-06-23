@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-export type BattleOptionType = "base" | "tech" | "submenu";
+export type BattleOptionType = "base" | "tech" | "submenu" | "confirm";
 
 interface BattleOptionSelectedEvent {
   type: BattleOptionType;
@@ -11,9 +11,9 @@ interface BattleOptionSelectedEvent {
 }
 
 type BattleOptionsProps = {
-  onOptionFocus: (option: BattleOptionSelectedEvent) => void;
+  onOptionFocus: (option: Omit<BattleOptionSelectedEvent, "setOptionsType">) => void;
   onOptionBlur: (option: { type: BattleOptionType }) => void;
-  onOptionSelected: (option: Omit<BattleOptionSelectedEvent, "setOptionsType">) => void;
+  onOptionSelected: (option: BattleOptionSelectedEvent) => void;
   disabled?: boolean;
 };
 
@@ -46,11 +46,11 @@ export default function BattleOptions({ onOptionSelected, onOptionFocus, onOptio
   const [optionsType, setOptionsType] = useState<BattleOptionType>("base");
   const [focused, setFocused] = useState<string>("");
 
-  const options:Array<string> = get_menu_options(optionsType);
+  const options = get_menu_options(optionsType) as Array<string>;
   disabled = disabled ?? false;
 
   useEffect(() => {
-    let timeoutId = setTimeout(() => {
+    let timeoutId:ReturnType<typeof setTimeout> | null = setTimeout(() => {
       timeoutId = null;
       if (focused.length === 0) {
         onOptionBlur({ type: optionsType });

@@ -1,17 +1,22 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Markdown from "./Markdown";
 import BattleOptions from "./battle-options";
-import type { BattleOptionType, OptionLabel  } from "./battle-options";
+import type { BattleOptionType  } from "./battle-options";
 
-type ContentType = "skills" | "tech" | "exp" | "run";
+type ContentType =
+  | "skills"
+  | "tech"
+  | "frameworks"
+  | "libs"
+  | "exp"
+  | "run";
 
 const BASE_TEXT = "Software Developer, JM is ready for conquest! What are you inspecting?";
 
 export default function BattleTextBox() {
   const [text, setText] = useState(BASE_TEXT);
   const [runAttempts, setRunAttempts] = useState(0);
-  const [disabled, setDisabled] = useState(false);
   const [content, setContent] = useState<ContentType | null>(null);
   const [menuStack, setMenuStack] = useState<{ menu: BattleOptionType; content: ContentType | null }[]>([]);
 
@@ -32,8 +37,6 @@ export default function BattleTextBox() {
         {content == null ? text : <TextContent type={content} runAttempt={runAttempts} />}
       </div>
       <BattleOptions
-        disabled={disabled}
-
         onOptionSelected={(event) => {
           if (event.label === "Close" || event.type === "confirm") {
             const prev = popMenuStack();
