@@ -42,6 +42,7 @@ const createHtml = (options: StringHTMLOptions) => {
       }
     }
   }
+  if (tag === 'br') return sb + ' />';
   if (tag) sb += '>';
   if (typeof options.children == 'string') {
     sb += options.children;
@@ -109,15 +110,25 @@ const DataListDisplay = (options: { title: string, data: Array<string> }) =>
   html.div({
     className: 'm-2 flex flex-col items-center border border-1 border-sky-900',
     children: [
-      html.h2({
+      html.h3({
         children: options.title,
-        className: 'text-pink-100 bg-slate-900 w-full',
+        className: 'text-pink-100 text-xl bg-slate-900 w-full',
       }),
       html.div({ className: 'h-1 bg-sky-900 w-full', }),
       List({ className: 'list-[square]', items: options.data }),
     ],
   });
 
+
+interface SocialMedia {
+  name: string;
+  link: string;
+}
+const Socials: SocialMedia[] = [
+  { name: 'X/Twitter', link: 'https://x.com/jmnuf_' },
+  { name: 'GitHub', link: 'https://github.com/jmnuf' },
+  { name: 'InstaGram', link: 'https://www.instagram.com/jmnuf_' },
+];
 
 appDiv.innerHTML = html.Frag({
   children: [
@@ -126,73 +137,109 @@ appDiv.innerHTML = html.Frag({
       children: [
         html.h1({
           className: 'text-center text-slate-50 py-4 text-3xl',
-          children: 'JM a Software Dev & Artist',
+          children: ['JM', html.br(), 'Software Dev & Artist'],
         }),
 
-        html.p({
-          className: 'text-center text-pink-50 py-1 w-1/2',
+        html.div({
+          className: 'grid grid-cols-1 md:grid-cols-12 px-4 text-pink-50',
           children: [
-            'A software engineer/developer that loves building and exploring random things. I love simple things even when simple is not the easier path. You can check out my ', Link({
-              children: 'GitHub',
-              href: 'https://github.com/jmnuf',
-            }), ' where I have some coding projects and experiments uploaded.', html.br(),
-            'I also do a bit of music which you can check over at my ', Link({
-              children: 'Spotify',
-              href: 'https://open.spotify.com/artist/0RNgRYXIdrgG6xOfHNPU7V',
-            }), '. I love doing music just as a fun and stress relieving hobby so it\'s not made to garner appeal in any way but my own. If you like it or dislike and want to tell me you can @ me in ', Link({
-              children: 'X',
-              href: 'https://x.com/jmnuf_',
-            }), '!'
+            html.aside({
+              className: 'flex flex-col',
+              children: [
+                html.h2({ className: 'text-center', children: 'Socials' }),
+                html.div({
+                  className: 'flex justify-center',
+                  children: [
+                    html.ul({
+                      className: 'list-disc',
+                      children: Socials.map((social) => html.li({
+                        children: Link({ children: social.name, href: social.link }),
+                      })),
+                    }),
+                  ],
+                }),
+              ],
+            }),
+
+            html.div({
+              className: 'flex justify-center md:col-span-11',
+              children: [
+                html.p({
+                  className: 'py-1 w-1/2',
+                  children: [
+                    'A software engineer/developer that loves building and exploring random things. I love simple things even when simple is not the easier path. You can check out my ,', Link({
+                      children: 'GitHub',
+                      href: 'https://github.com/jmnuf',
+                    }), ' where I have some coding projects and experiments uploaded.', html.br(),
+                    'I also do a bit of music which you can check over at my ', Link({
+                      children: 'Spotify',
+                      href: 'https://open.spotify.com/artist/0RNgRYXIdrgG6xOfHNPU7V',
+                    }), '. I love doing music just as a fun and stress relieving hobby so it\'s not made to garner appeal in any way but my own. If you like it or dislike and want to tell me you can ', Link({
+                      children: '@ me',
+                      href: 'https://x.com/jmnuf_',
+                    }), '!'
+                  ],
+                }),
+              ],
+            }),
           ],
         }),
       ],
     }),
 
-    html.div({
-      className: 'bg-pink-200 text-purple-800 px-2 py-4 md:px-4 grid grid-cols-1 md:grid-cols-2',
+    html.section({
+      className: 'bg-pink-200 text-purple-800 px-2 py-4 md:px-4 flex flex-col gap-2',
       children: [
-        DataListDisplay({
-          title: 'General Skills',
-          data: [
-            'Bilingual (English/Spanish)',
-            'Team communication',
-            'General leadership',
-            'Strong sense of responsability',
-            'Interpersonal Skills',
+        html.h2({ children: 'My Skills', }),
+        html.div({
+          className: 'grid grid-cols-1 md:grid-cols-2',
+          children: [
+            DataListDisplay({
+              title: 'General Skills',
+              data: [
+                'Bilingual (English/Spanish)',
+                'Team communication',
+                'General leadership',
+                'Strong sense of responsability',
+                'Interpersonal Skills',
+              ],
+            }),
+
+            DataListDisplay({
+              title: 'Tech Skills',
+              data: [
+                'Software Development',
+                'Software Design',
+                'Web Development',
+                'Desktop Development',
+                'Software Testing',
+              ],
+            }),
+
+            DataListDisplay({
+              title: 'Programming Languages',
+              data: [
+                'TypeScript', 'Rust',
+                'C', 'C++',
+                'Java 8', 'Python',
+              ],
+            }),
+
+            DataListDisplay({
+              title: 'Frameworks Known',
+              data: [
+                'React', 'SolidJS',
+                'NextJS', 'EGUI (Rust)',
+                'Qt (C++)', 'Java Swing',
+              ],
+            }),
+
           ],
         }),
-
-        DataListDisplay({
-          title: 'Tech Skills',
-          data: [
-            'Software Development',
-            'Software Design',
-            'Web Development',
-            'Desktop Development',
-            'Software Testing',
-          ],
-        }),
-
-        DataListDisplay({
-          title: 'Programming Languages',
-          data: [
-            'TypeScript', 'Rust',
-            'C', 'C++',
-            'Java 8', 'Python',
-          ],
-        }),
-
-        DataListDisplay({
-          title: 'Frameworks Known',
-          data: [
-            'React', 'SolidJS',
-            'NextJS', 'EGUI (Rust)',
-            'Qt (C++)', 'Java Swing',
-          ],
-        }),
-
       ],
     }),
+
+    html.div({}),
 
     html.footer({
       className: 'text-center bg-slate-900 text-pink-100 pt-4 pb-2',
