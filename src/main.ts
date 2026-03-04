@@ -2,11 +2,18 @@ type Fn<Arguments extends any[], Return> = (...args: Arguments) => Return;
 
 const appDiv = document.getElementById('app')!;
 
+type StringHTMLChildren =
+  | string
+  | Array<string>
+  | Fn<[string | undefined, StringHTMLOptions['attrs']], string>
+  ;
+
 interface StringHTMLOptions {
-  tag?: string;
+  tag?: keyof HTMLElementTagNameMap | (string & {});
+  id?: string;
   attrs?: Record<string, string | boolean | undefined | null>;
   className?: string;
-  content?: string | Array<string> | Fn<[string | undefined, Record<string, string | boolean>], string>;
+  children?: StringHTMLChildren;
 }
 
 const createHtml = (options: StringHTMLOptions) => {
@@ -14,10 +21,9 @@ const createHtml = (options: StringHTMLOptions) => {
   const attrs = {} as Record<string, string | boolean>;
   let sb = '';
   if (tag) sb += '<' + tag;
+  if (tag && options.id) sb += ' id=' + JSON.stringify(options.id.trim());
   if (tag && options.className && options.className.trim().length > 0) {
-    sb += ' class="';
-    sb += options.className.trim();
-    sb += '"';
+    sb += ' class=' + JSON.stringify(options.className.trim());
   }
   if (tag && options.attrs) {
     for (const [name, value] of Object.entries(options.attrs)) {
@@ -37,81 +43,114 @@ const createHtml = (options: StringHTMLOptions) => {
     }
   }
   if (tag) sb += '>';
-  if (typeof options.content == 'string') {
-    sb += '\n    ' + options.content.split('\n').join('\n    ') + '\n';
-  } else if (Array.isArray(options.content)) {
-    sb += '\n    ' + options.content.join('\n    ') + '\n';
-  } else if (typeof options.content == 'function') {
-    sb += '\n    ' + options.content(tag, attrs) + '\n';
-  } else if (!options.content) {
+  if (typeof options.children == 'string') {
+    sb += options.children;
+  } else if (Array.isArray(options.children)) {
+    sb += options.children.join('');
+  } else if (typeof options.children == 'function') {
+    sb += options.children(tag, attrs);
+  } else if (!options.children) {
     // NOOP
   } else {
-    const _never: never = options.content;
+    const _never: never = options.children;
     _never;
-    throw new Error('UNREACHABLE: createHtml options.content type = ' + typeof options.content);
+    throw new Error('UNREACHABLE: createHtml options.content type = ' + typeof options.children);
   }
   if (tag) sb += '</' + tag + '>';
   return sb;
 }
 
-const div = (options: Omit<StringHTMLOptions, 'tag'>) => {
-  (options as StringHTMLOptions).tag = 'div';
-  return createHtml(options);
-};
+const Frag = (options: Pick<StringHTMLOptions, 'children'>) =>
+  createHtml({ tag: undefined, children: options.children });
 
-const frag = (options: Pick<StringHTMLOptions, 'content'>) =>
-  createHtml(options);
+const html = (function() {
+  const obj = Object.create(null);
+  return new Proxy(obj, {
+    get(target, prop, receiver) {
+      if (typeof prop == 'symbol') return Reflect.get(target, prop, receiver);
+      if (prop === 'Frag' || prop.toLowerCase() == 'fragment') {
+        return (options: Pick<StringHTMLOptions, 'children'>) => Frag({ children: options.children });
+      }
+      return (options: StringHTMLOptions = {}) => {
+        options.tag = prop;
+        return createHtml(options);
+      };
+    }
+  }) as {
+    [K in keyof HTMLElementTagNameMap]: (props?: Omit<StringHTMLOptions, 'tag'>) => ReturnType<typeof createHtml>;
+  } & { Frag: typeof Frag };
+})();
 
-const h2 = (content: string) => createHtml({ tag: 'h2', content });
-const ul = (options: { className?: string; items: string[] }) => createHtml({
-  tag: 'ul',
+const List = (options: { className?: string; items: StringHTMLChildren[] }) => html.ul({
   className: options.className,
-  content: () => {
+  children: () => {
     const tag = options.items.length >= 6 ? 'div' : undefined;
     const className = 'grid grid-cols-2';
     return createHtml({
       tag, className,
-      content: options.items.map(content => createHtml({ tag: 'li', className: 'w-max pr-6', content })),
+      children: options.items.map((children) => html.li({ className: 'w-max pr-6', children })),
     });
   },
 });
 
+const Link = (props: Omit<StringHTMLOptions, 'tag'> & { href?: string }) => html.a({
+  children: props.children,
+  className: 'text-sky-300 underline italic decoration-wavy ' + (props.className ?? ''),
+  attrs: {
+    href: props.href,
+    target: '_blank',
+    ref: 'noref',
+    follow: 'nofollow',
+    ...props.attrs,
+  },
+});
+
 const DataListDisplay = (options: { title: string, data: Array<string> }) =>
-  createHtml({
-    tag: 'div',
+  html.div({
     className: 'm-2 flex flex-col items-center border border-1 border-sky-900',
-    content: [
-      h2(options.title),
-      div({
-        className: 'h-1 bg-sky-900 w-full',
+    children: [
+      html.h2({
+        children: options.title,
+        className: 'text-pink-100 bg-slate-900 w-full',
       }),
-      ul({ className: 'list-[square]', items: options.data }),
+      html.div({ className: 'h-1 bg-sky-900 w-full', }),
+      List({ className: 'list-[square]', items: options.data }),
     ],
   });
 
 
-appDiv.innerHTML = frag({
-  content: [
-    div({
+appDiv.innerHTML = html.Frag({
+  children: [
+    html.div({
       className: 'flex flex-col items-center',
-      content: [
-        createHtml({
-          tag: 'h1',
+      children: [
+        html.h1({
           className: 'text-center text-slate-50 py-4 text-3xl',
-          content: 'jmnuf\'s Corner',
+          children: 'JM a Software Dev & Artist',
         }),
 
-        createHtml({
-          tag: 'p',
+        html.p({
           className: 'text-center text-pink-50 py-1 w-1/2',
-          content: 'A software engineer/developer that loves building and exploring random things. I love simple things even when simple is not the easier path. I can also appreciate, build and work with high levels of complexity when required.',
+          children: [
+            'A software engineer/developer that loves building and exploring random things. I love simple things even when simple is not the easier path. You can check out my ', Link({
+              children: 'GitHub',
+              href: 'https://github.com/jmnuf',
+            }), ' where I have some coding projects and experiments uploaded.', html.br(),
+            'I also do a bit of music which you can check over at my ', Link({
+              children: 'Spotify',
+              href: 'https://open.spotify.com/artist/0RNgRYXIdrgG6xOfHNPU7V',
+            }), '. I love doing music just as a fun and stress relieving hobby so it\'s not made to garner appeal in any way but my own. If you like it or dislike and want to tell me you can @ me in ', Link({
+              children: 'X',
+              href: 'https://x.com/jmnuf_',
+            }), '!'
+          ],
         }),
       ],
     }),
 
-    div({
+    html.div({
       className: 'bg-pink-200 text-purple-800 px-2 py-4 md:px-4 grid grid-cols-1 md:grid-cols-2',
-      content: [
+      children: [
         DataListDisplay({
           title: 'General Skills',
           data: [
@@ -155,12 +194,11 @@ appDiv.innerHTML = frag({
       ],
     }),
 
-    createHtml({
-      tag: 'footer',
+    html.footer({
       className: 'text-center bg-slate-900 text-pink-100 pt-4 pb-2',
-      content: [
-        createHtml({ tag: 'p', content: 'Built by hand with love and no AI.' }),
-        createHtml({ tag: 'p', content: () => 'Copyright &copy; 2023 - ' + (new Date()).getFullYear(), }),
+      children: [
+        html.p({ children: 'Built by hand with love and no AI.' }),
+        html.p({ children: () => 'Copyright &copy; 2023 - ' + (new Date()).getFullYear(), }),
       ],
     }),
   ],
