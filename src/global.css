@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
+
 body {
   @apply bg-purple-900;
+  @apply text-pink-50;
   min-width: 100vw;
   min-height: 100vh;
 }
@@ -12,12 +14,14 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 36px;
-  line-height: calc(2.5 / 2.25);
+  @apply text-5xl;
 }
 
 h2 {
-  font-size: 24px;
-  line-height: calc(2 / 1.5);
+  @apply text-3xl;
+}
+
+h3 {
+  @apply text-2xl;
 }
 
